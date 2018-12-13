@@ -1,0 +1,17 @@
+{
+  "id": "colytra",
+  "name": "Colytra",
+  "version": "1.14-pre1",
+  "authors": ["C4"],
+  "license": "LGPL",
+  "description": "Adds attaching elytras to chestplates.",
+  "side": "universal",
+  "initializer": "c4.colytra.Colytra",
+  "mixins": {
+    "common": "colytra.common.json",
+    "client": "colytra.client.json"
+  },
+  "dependencies": {
+	"fabric": ""
+  }
+}
