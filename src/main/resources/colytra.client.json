@@ -3,7 +3,8 @@
   "package": "c4.colytra.mixin.client",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinElytraEntityRenderer"
+    "MixinElytraEntityRenderer",
+    "MixinItemStack"
   ],
   "injectors": {
     "defaultRequire": 1

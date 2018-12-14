@@ -12,12 +12,24 @@ import net.minecraft.client.render.entity.model.ElytraEntityModel;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.TextComponent;
+import net.minecraft.text.TextFormat;
+import net.minecraft.text.TranslatableTextComponent;
 import net.minecraft.util.Identifier;
+
+import java.util.List;
 
 @Environment(EnvType.CLIENT)
 public class ClientHooks {
 
     private static final Identifier SKIN = new Identifier("textures/entity/elytra.png");
+
+    public static List<TextComponent> getColytraTooltip(ItemStack stack, List<TextComponent> tooltip) {
+        if (ColytraUtils.hasElytraAttachment(stack)) {
+            tooltip.add(1, new TranslatableTextComponent("colytra.elytraAttachment").applyFormat(TextFormat.GRAY, TextFormat.ITALIC));
+        }
+        return tooltip;
+    }
 
     public static void renderColytra(LivingEntity var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8, ElytraEntityRenderer elytraEntityRenderer, ElytraEntityModel model) {
         ItemStack var9 = var1.getEquippedStack(EquipmentSlot.CHEST);
