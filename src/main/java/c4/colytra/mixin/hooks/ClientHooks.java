@@ -26,7 +26,7 @@ public class ClientHooks {
 
     public static List<TextComponent> getColytraTooltip(ItemStack stack, List<TextComponent> tooltip) {
         if (ColytraUtils.hasElytraAttachment(stack)) {
-            tooltip.add(1, new TranslatableTextComponent("colytra.elytraAttachment").applyFormat(TextFormat.GRAY, TextFormat.ITALIC));
+            tooltip.add(1, new TranslatableTextComponent("colytra.elytraAttachment").applyFormat(TextFormat.YELLOW, TextFormat.ITALIC));
         }
         return tooltip;
     }
