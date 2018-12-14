@@ -12,6 +12,6 @@
     "client": "colytra.client.json"
   },
   "dependencies": {
-	"fabric": ""
+    "caelus": ""
   }
 }
