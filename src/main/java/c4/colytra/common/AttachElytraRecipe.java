@@ -79,7 +79,10 @@ public class AttachElytraRecipe extends AbstractRecipe {
             return var2;
         } else {
             CompoundTag tag = var2.hasTag() ? var2.getTag().copy() : new CompoundTag();
-            tag.putBoolean(ColytraUtils.ELYTRA_ATTACH_TAG, true);
+            CompoundTag attach = new CompoundTag();
+            attach.putBoolean(ColytraUtils.ELYTRA_ACTIVE_TAG, true);
+            attach.putInt(ColytraUtils.ELYTRA_DAMAGE_TAG, Items.ELYTRA.getDurability());
+            tag.put(ColytraUtils.ELYTRA_ATTACH_TAG, attach);
             var2.setTag(tag);
             return var2;
         }
