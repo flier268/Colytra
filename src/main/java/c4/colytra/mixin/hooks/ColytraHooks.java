@@ -18,6 +18,11 @@ public class ColytraHooks {
 
             if (ColytraUtils.hasElytraAttachment(stack)) {
                 livingEntity.getAttributeInstance(Caelus.ELYTRA_FLIGHT).addModifier(ColytraUtils.FLIGHT_MODIFIER);
+
+                if (!livingEntity.world.isRemote && (livingEntity.age + 1) % 20 == 0 && livingEntity.isFallFlying() &&
+                        !livingEntity.onGround && !livingEntity.hasVehicle()) {
+                    stack.applyDamage(1, livingEntity);
+                }
             }
         }
     }
