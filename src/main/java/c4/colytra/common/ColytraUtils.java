@@ -17,6 +17,6 @@ public class ColytraUtils {
             Operation.ADDITION);
 
     public static boolean hasElytraAttachment(ItemStack stack) {
-        return stack.hasTag() && stack.getTag().getTag(ELYTRA_ATTACH_TAG) != null;
+        return stack.hasTag() && stack.getTag().get(ELYTRA_ATTACH_TAG) != null;
     }
 }

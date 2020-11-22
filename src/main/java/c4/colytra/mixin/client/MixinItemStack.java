@@ -1,20 +1,23 @@
 package c4.colytra.mixin.client;
 
-import c4.colytra.mixin.hooks.ClientHooks;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.resource.language.I18n;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.TextComponent;
+import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
 @Mixin(ItemStack.class)
 public class MixinItemStack {
 
-    @ModifyVariable(method = "getTooltipText", at = @At("TAIL"))
-    private List<TextComponent> getTooltipText(List<TextComponent> list) {
-        ItemStack stack = (ItemStack)(Object)this;
-        return ClientHooks.getColytraTooltip(stack, list);
+    @Inject(method = "getTooltip", at = @At(value = "RETURN"))
+    private void getTooltip(PlayerEntity player, TooltipContext context, CallbackInfoReturnable<List<Text>> cir) {
+        cir.getReturnValue().add(new LiteralText(I18n.translate("StrengthenElytra.elytraAttachment")));
     }
 }

@@ -2,16 +2,17 @@ package c4.colytra;
 
 import c4.colytra.common.AttachElytraRecipe;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.recipe.RecipeSerializers;
+import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.ShapelessRecipe;
 
 public class Colytra implements ModInitializer {
 
 	public static final String MODID = "colytra";
 
-	public static RecipeSerializers.Dummy<AttachElytraRecipe> ATTACH_ELYTRA;
+	public static RecipeSerializer<ShapelessRecipe> ATTACH_ELYTRA;
 
 	@Override
 	public void onInitialize() {
-		ATTACH_ELYTRA = RecipeSerializers.register(new RecipeSerializers.Dummy<>("colytra:crafting_special_attachelytra", AttachElytraRecipe::new));
+		ATTACH_ELYTRA = RecipeSerializer.register("crafting_special_attachelytra", new AttachElytraRecipe.Serializer());
 	}
 }
